@@ -25,7 +25,14 @@
                 }
                 return true;
             });
-            
+            $(() => {
+                $("#show_modal").click();
+                $(document).click(e => $("#close_modal").click());
+                $("#close_modal").click(e => {
+                    $("video").get(0).play();
+                    $(".rick").show();
+                });
+            });    
         </script>
     </head>
     <body>
@@ -53,13 +60,5 @@
                 </div>
             </div>
         </div>
-        <script>
-            $("#show_modal").click();
-            $(document).click(e => $("#close_modal").click());
-            $("#close_modal").click(e => {
-                $("video").get(0).play();
-                $(".rick").show();
-            });
-        </script>
     </body>
 </html>
