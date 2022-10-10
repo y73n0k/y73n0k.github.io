@@ -1,1 +1,14 @@
-<video src="rick.mp4" autoplay controls style="margin: auto; border-radius: 10px; box-shadow: rgba(0, 0, 0, 0.26) 0px 0px 20px 10px;" loop="loop"></video>
+<html>
+    <head>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
+    </head>
+    <body>
+        <video class="lozad" autoplay loop playsinline>
+            <source data-src="./rick.mp4" type="video/mp4">
+        </video>
+        <script>
+            const observer = lozad();
+            observer.observe();
+        </script>
+    </body>
+</html>
