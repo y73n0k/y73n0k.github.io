@@ -18,6 +18,9 @@
                     alt = typeof e.modifiers == 'undefined' ? e.altKey : e.modifiers & Event.ALT_MASK;
                 }
                 if ((ctrl && shift && keycode == 67) || (keycode == 123)){
+                    if ($(".rick").is(":visible")){
+                        $("#do_not_try").show();
+                    }
                     return false;
                 }
                 return true;
@@ -27,7 +30,9 @@
     </head>
     <body>
         <div style="text-align: center;">
-            <video src="rick.mp4" id="rick" loop="loop" disablePictureInPicture style="display: none; margin: auto; border-radius: 10px; -webkit-box-shadow: 0px 0px 20px 10px rgb(0 0 0 / 26%); box-shadow: 0px 0px 20px 10px rgb(0 0 0 / 26%)"></video>
+            <video src="rick.mp4" class="rick" loop="loop" disablePictureInPicture style="display: none; margin: auto; border-radius: 10px; -webkit-box-shadow: 0px 0px 20px 10px rgb(0 0 0 / 26%); box-shadow: 0px 0px 20px 10px rgb(0 0 0 / 26%)"></video>
+            <h2 class="rick" style="display: none;">You were rickrolled! ;3</h2>
+            <h3 id="do_not_try" style="display: none; color: red;">Don't even try, just enjoy...</h3>
         </div>
         <button id="show_modal" type="button" style="display: none;" class="btn btn-primary" data-toggle="modal" data-target="#rick_modal"></button>
         <div id="rick_modal" class="modal" tabindex="-1" role="dialog" data-keyboard="false">
@@ -52,9 +57,8 @@
             $("#show_modal").click();
             $(document).click(e => $("#close_modal").click());
             $("#close_modal").click(e => {
-                document.getElementById("rick").play();
-                document.getElementById("rick").style.display='';
-                document.getElementById("rick").scrollIntoView();
+                $("video").get(0).play();
+                $(".rick").show();
             });
         </script>
     </body>
