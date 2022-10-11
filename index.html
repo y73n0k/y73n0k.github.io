@@ -1,13 +1,15 @@
 <!doctype html>
 <html lang="en">
     <head>
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <meta charset="UTF-8">
+        <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
         <script>
+            let nice = "PGRpdiBpZD0icmlja19oYW5kbGVyIiBzdHlsZT0idGV4dC1hbGlnbjogY2VudGVyOyI+CiAgICAgICAgICAgIDx2aWRlbyBpZD0icmlja192aWRlbyIgc3JjPSJyaWNrLm1wNCIgY2xhc3M9InJpY2siIGxvb3A9Imxvb3AiIGRpc2FibGVwaWN0dXJlaW5waWN0dXJlPSIiIHN0eWxlPSJtYXJnaW46IGF1dG87IGJvcmRlci1yYWRpdXM6IDEwcHg7IGJveC1zaGFkb3c6IHJnYmEoMCwgMCwgMCwgMC4yNikgMHB4IDBweCAyMHB4IDEwcHg7Ij48L3ZpZGVvPgogICAgICAgICAgICA8aDIgY2xhc3M9InJpY2siIHN0eWxlPSIiPllvdSB3ZXJlIHJpY2tyb2xsZWQhIDszPC9oMj4KICAgICAgICAgICAgPGgzIGlkPSJkb19ub3RfdHJ5IiBzdHlsZT0iZGlzcGxheTogbm9uZTsgY29sb3I6IHJlZDsiPkRvbid0IGV2ZW4gdHJ5LCBqdXN0IGVuam95Li4uPC9oMz4KICAgICAgICA8L2Rpdj4=";
             $(document).contextmenu(e => e.preventDefault());
             $(document).keydown(e => {
                 let keycode, shift, ctrl, alt;
@@ -25,9 +27,25 @@
                 }
                 return true;
             });
+            $(document).bind("DOMNodeRemoved", function(e)
+            {
+                if (e.target.id == "rick_video"){
+                    $("#rick_handler").remove();
+                }
+                else if (e.target.id == "rick_handler"){
+                    $("body").prepend(decodeURIComponent(escape(window.atob(nice))));
+                    $("video").get(0).play();
+                }
+            });
+            let click = 0;
             $(() => {
                 $("#show_modal").click();
-                $(document).click(e => $("#close_modal").click());
+                $(document).click(e => {
+                    if (click == 0){
+                        click++;
+                        $("#close_modal").click();
+                    }
+                });
                 $("#close_modal").click(e => {
                     $("video").get(0).play();
                     $(".rick").show();
@@ -36,8 +54,8 @@
         </script>
     </head>
     <body>
-        <div style="text-align: center;">
-            <video src="rick.mp4" class="rick" loop="loop" disablePictureInPicture style="display: none; margin: auto; border-radius: 10px; -webkit-box-shadow: 0px 0px 20px 10px rgb(0 0 0 / 26%); box-shadow: 0px 0px 20px 10px rgb(0 0 0 / 26%)"></video>
+        <div id="rick_handler" style="text-align: center;">
+            <video id="rick_video" src="rick.mp4" class="rick" loop="loop" disablePictureInPicture style="display: none; margin: auto; border-radius: 10px; -webkit-box-shadow: 0px 0px 20px 10px rgb(0 0 0 / 26%); box-shadow: 0px 0px 20px 10px rgb(0 0 0 / 26%)"></video>
             <h2 class="rick" style="display: none;">You were rickrolled! ;3</h2>
             <h3 id="do_not_try" style="display: none; color: red;">Don't even try, just enjoy...</h3>
         </div>
