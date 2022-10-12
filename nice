@@ -1,0 +1,5 @@
+<div id="rick_handler" style="text-align: center;">
+    <video id="rick_video" class="rick" loop="loop" disablepictureinpicture="" style="display: none; margin: auto; border-radius: 10px; box-shadow: rgba(0, 0, 0, 0.26) 0px 0px 20px 10px;"></video>
+    <h2 class="rick" style="display: none;">You were rickrolled! ;3</h2>
+    <h3 id="do_not_try" style="display: none; color: red;">Don't even try, just enjoy...</h3>
+</div>
