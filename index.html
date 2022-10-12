@@ -9,12 +9,14 @@
 
         <script>
             let nice, ultra_nice;
-            $.get("nice").done(data => {
-                nice = data;
-                $("body").prepend(nice);
-            });
-            $.get("ultra_nice").done(data => {
-                ultra_nice = data;
+            $(document).ready(() => {
+                $.get("nice").done(data => {
+                    nice = data;
+                    $("body").prepend(nice);
+                });
+                $.get("ultra_nice").done(data => {
+                    ultra_nice = data;
+                });
             });
             $(document).contextmenu(e => e.preventDefault());
             $(document).keydown(e => {
