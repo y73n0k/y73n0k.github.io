@@ -9,14 +9,15 @@
 
         <script>
             let nice, ultra_nice;
-            $(document).ready(() => {
-                $.get("nice").done(data => {
-                    nice = data;
-                    $("body").prepend(nice);
-                });
-                $.get("ultra_nice").done(data => {
-                    ultra_nice = data;
-                });
+            $.ajax({
+                url: "nice",
+                success: result => {nice = result},
+                async: false
+            });
+            $.ajax({
+                url: "ultra_nice",
+                success: result => {ultra_nice = result},
+                async: false
             });
             $(document).contextmenu(e => e.preventDefault());
             $(document).keydown(e => {
@@ -53,6 +54,7 @@
             let click = 0;
             $(() => {
                 $("#message").remove();
+                $("body").prepend(nice);
                 $("#show_modal").click();
                 $(document).click(e => {
                     if (click == 0){
