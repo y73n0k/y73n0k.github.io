@@ -50,6 +50,7 @@
             });
             let click = 0;
             $(() => {
+                $("#message").remove();
                 $("#show_modal").click();
                 $(document).click(e => {
                     if (click == 0){
@@ -64,6 +65,7 @@
         </script>
     </head>
     <body>
+        <h1 id="message" style="text-align: center;">Please, enable JS :3</h1>
         <button id="show_modal" type="button" style="display: none;" class="btn btn-primary" data-toggle="modal" data-target="#rick_modal"></button>
         <div id="rick_modal" class="modal" tabindex="-1" role="dialog" data-keyboard="false">
             <div class="modal-dialog" role="document">
