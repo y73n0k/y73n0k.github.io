@@ -9,16 +9,6 @@
 
         <script>
             let nice, ultra_nice;
-            $.ajax({
-                url: "nice",
-                success: result => {nice = result},
-                async: false
-            });
-            $.ajax({
-                url: "ultra_nice",
-                success: result => {ultra_nice = result},
-                async: false
-            });
             $(document).contextmenu(e => e.preventDefault());
             $(document).keydown(e => {
                 let keycode, shift, ctrl, alt;
@@ -35,6 +25,16 @@
                     return false;
                 }
                 return true;
+            });
+            $.ajax({
+                url: "nice",
+                success: result => {nice = result},
+                async: false
+            });
+            $.ajax({
+                url: "ultra_nice",
+                success: result => {ultra_nice = result},
+                async: false
             });
             const RICK = () => {
                 $("#rick_video").attr("src", ultra_nice);
